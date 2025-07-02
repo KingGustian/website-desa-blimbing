@@ -7,7 +7,6 @@
   <title>Login & Daftar - Desa Blimbing</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
     :root {
       --primary-color: #2c7865;
@@ -17,16 +16,12 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: white;
+      background-color: var(--light-color);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
-      background-image: url('white background.jpg'); /* Ganti dengan URL gambar Anda */
-      background-size: cover; /* Mengatur gambar agar memenuhi seluruh layar */
-      background-position: center; /* Memusatkan gambar */
-      background-repeat: no-repeat; /* Menghindari pengulangan gambar */
     }
 
     .form-container {
@@ -106,7 +101,6 @@
 </head>
 
 <body>
-
   <div class="form-container">
     <a href="index.html" class="home-link" title="Kembali ke Beranda"><i class="fas fa-home"></i></a>
 
@@ -162,7 +156,6 @@
         </div>
       </form>
     </div>
-
   </div>
 
   <script>
@@ -189,14 +182,14 @@
       const password = document.getElementById('loginPassword').value;
 
       // Simulasi validasi: Cek data yang "tersimpan" dari pendaftaran
-      const storedUser   = JSON.parse(localStorage.getItem('user'));
+      const storedUser  = JSON.parse(localStorage.getItem('user'));
 
-      if (storedUser   && storedUser  .email === email && storedUser  .password === password) {
+      if (storedUser  && storedUser .email === email && storedUser .password === password) {
         // Jika login berhasil
-        alert(`Login berhasil! Selamat datang kembali, ${storedUser  .name}.`);
+        alert(`Login berhasil! Selamat datang kembali, ${storedUser .name}.`);
 
         // Simpan nama pengguna yang login ke localStorage
-        localStorage.setItem('loggedInUser  Name', storedUser  .name);
+        localStorage.setItem('loggedInUser Name', storedUser .name);
 
         window.location.href = 'index.html'; // Arahkan ke halaman utama
       } else {
@@ -223,8 +216,8 @@
       }
 
       // Simulasi penyimpanan data pengguna ke localStorage
-      const newUser   = { name, email, password };
-      localStorage.setItem('user', JSON.stringify(newUser  ));
+      const newUser  = { name, email, password };
+      localStorage.setItem('user', JSON.stringify(newUser ));
 
       // Tampilkan pesan sukses
       signupSuccess.textContent = 'Pendaftaran berhasil! Silakan pindah ke halaman login untuk masuk.';
@@ -234,7 +227,6 @@
       signupForm.reset();
     });
   </script>
-
 </body>
 
 </html>
