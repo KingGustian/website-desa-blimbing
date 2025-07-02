@@ -16,12 +16,18 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-color);
+      /* Hapus background-color: var(--light-color); */
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      /* Menambahkan background image */
+      background-image: url('white background.jpg');
+      background-size: cover; /* Memastikan gambar menutupi seluruh area */
+      background-position: center; /* Memposisikan gambar di tengah */
+      background-repeat: no-repeat; /* Mencegah gambar berulang */
+      background-attachment: fixed; /* Membuat gambar tetap saat scroll */
     }
 
     .form-container {
@@ -182,14 +188,14 @@
       const password = document.getElementById('loginPassword').value;
 
       // Simulasi validasi: Cek data yang "tersimpan" dari pendaftaran
-      const storedUser  = JSON.parse(localStorage.getItem('user'));
+      const storedUser = JSON.parse(localStorage.getItem('user'));
 
-      if (storedUser  && storedUser .email === email && storedUser .password === password) {
+      if (storedUser && storedUser.email === email && storedUser.password === password) {
         // Jika login berhasil
-        alert(`Login berhasil! Selamat datang kembali, ${storedUser .name}.`);
+        alert(`Login berhasil! Selamat datang kembali, ${storedUser.name}.`);
 
         // Simpan nama pengguna yang login ke localStorage
-        localStorage.setItem('loggedInUser Name', storedUser .name);
+        localStorage.setItem('loggedInUserName', storedUser.name);
 
         window.location.href = 'index.html'; // Arahkan ke halaman utama
       } else {
@@ -216,8 +222,8 @@
       }
 
       // Simulasi penyimpanan data pengguna ke localStorage
-      const newUser  = { name, email, password };
-      localStorage.setItem('user', JSON.stringify(newUser ));
+      const newUser = { name, email, password };
+      localStorage.setItem('user', JSON.stringify(newUser));
 
       // Tampilkan pesan sukses
       signupSuccess.textContent = 'Pendaftaran berhasil! Silakan pindah ke halaman login untuk masuk.';
