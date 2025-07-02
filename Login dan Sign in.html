@@ -17,12 +17,16 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--light-color);
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
+      background-image: url('white background.jpg'); /* Ganti dengan URL gambar Anda */
+      background-size: cover; /* Mengatur gambar agar memenuhi seluruh layar */
+      background-position: center; /* Memusatkan gambar */
+      background-repeat: no-repeat; /* Menghindari pengulangan gambar */
     }
 
     .form-container {
@@ -101,7 +105,7 @@
   </style>
 </head>
 
-<body>
+<body style="background-color: white;">
 
   <div class="form-container">
     <a href="index.html" class="home-link" title="Kembali ke Beranda"><i class="fas fa-home"></i></a>
@@ -185,16 +189,16 @@
       const password = document.getElementById('loginPassword').value;
 
       // Simulasi validasi: Cek data yang "tersimpan" dari pendaftaran
-      const storedUser = JSON.parse(localStorage.getItem('user'));
+      const storedUser  = JSON.parse(localStorage.getItem('user'));
 
-      if (storedUser && storedUser.email === email && storedUser.password === password) {
+      if (storedUser  && storedUser .email === email && storedUser .password === password) {
         // Jika login berhasil
-        alert(`Login berhasil! Selamat datang kembali, ${storedUser.name}.`);
+        alert(`Login berhasil! Selamat datang kembali, ${storedUser .name}.`);
 
-        // DITAMBAHKAN: Simpan nama pengguna yang login ke localStorage
-        localStorage.setItem('loggedInUserName', storedUser.name);
+        // Simpan nama pengguna yang login ke localStorage
+        localStorage.setItem('loggedInUser Name', storedUser .name);
 
-        window.location.href = 'index.html'; // Baru arahkan ke halaman utama
+        window.location.href = 'index.html'; // Arahkan ke halaman utama
       } else {
         // Jika login gagal
         loginError.textContent = 'Email atau kata sandi salah!';
@@ -219,9 +223,8 @@
       }
 
       // Simulasi penyimpanan data pengguna ke localStorage
-      // Di aplikasi nyata, ini akan dikirim ke database melalui API
-      const newUser = { name, email, password };
-      localStorage.setItem('user', JSON.stringify(newUser));
+      const newUser  = { name, email, password };
+      localStorage.setItem('user', JSON.stringify(newUser ));
 
       // Tampilkan pesan sukses
       signupSuccess.textContent = 'Pendaftaran berhasil! Silakan pindah ke halaman login untuk masuk.';
