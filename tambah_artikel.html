@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Artikel Baru - Desa Blimbing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c7865;
+            --light-color: #f8f9fa;
+        }
+        body {
+            background-color: var(--light-color);
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .form-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(44, 120, 101, 0.25);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="form-title mb-0">Buat Artikel Baru</h3>
+                <a href="Menu Artikel.html" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Kembali
+                </a>
+            </div>
+            
+            <form id="form-tambah-artikel">
+                <div class="mb-3">
+                    <label for="judul" class="form-label">Judul Artikel</label>
+                    <input type="text" class="form-control" id="judul" required>
+                </div>
+                <div class="mb-3">
+                    <label for="penulis" class="form-label">Nama Penulis</label>
+                    <input type="text" class="form-control" id="penulis" required>
+                </div>
+                <div class="mb-3">
+                    <label for="gambar" class="form-label">URL Gambar</label>
+                    <input type="text" class="form-control" id="gambar" placeholder="Contoh: https://example.com/gambar.jpg" required>
+                    <div class="form-text">
+                        Anda bisa mengunggah gambar ke situs seperti <a href="https://postimages.org/" target="_blank">PostImages</a> lalu salin link-nya ke sini.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="kategori" class="form-label">Kategori</label>
+                    <select class="form-select" id="kategori">
+                        <option value="Pemerintahan">Pemerintahan</option>
+                        <option value="Pertanian">Pertanian</option>
+                        <option value="Sosial">Sosial</option>
+                        <option value="Budaya">Budaya</option>
+                        <option value="Infrastruktur">Infrastruktur</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="konten" class="form-label">Isi Artikel</label>
+                    <textarea class="form-control" id="konten" rows="8" required></textarea>
+                </div>
+                <div id="success-message" class="alert alert-success d-none" role="alert"></div>
+                <button type="submit" class="btn btn-primary w-100 py-2">Publikasikan Artikel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('form-tambah-artikel');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // 1. Ambil data dari form
+            const judul = document.getElementById('judul').value;
+            const penulis = document.getElementById('penulis').value;
+            const gambar = document.getElementById('gambar').value;
+            const kategori = document.getElementById('kategori').value;
+            const konten = document.getElementById('konten').value;
+
+            // 2. Ambil data artikel yang sudah ada dari localStorage (jika ada)
+            let articles = JSON.parse(localStorage.getItem('articles')) || [];
+
+            // 3. Buat objek artikel baru
+            const newArticle = {
+                id: Date.now(), // ID unik berdasarkan waktu
+                title: judul,
+                author: penulis,
+                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+                image: gambar,
+                category: kategori,
+                content: konten
+            };
+
+            // 4. Tambahkan artikel baru ke dalam array
+            articles.unshift(newArticle); // unshift() agar artikel baru selalu di paling atas
+
+            // 5. Simpan kembali array yang sudah diperbarui ke localStorage
+            localStorage.setItem('articles', JSON.stringify(articles));
+
+            // 6. Tampilkan pesan sukses dan reset form
+            successMessage.textContent = 'Artikel berhasil dipublikasikan! Anda akan diarahkan kembali...';
+            successMessage.classList.remove('d-none');
+            form.reset();
+
+            // 7. Arahkan kembali ke halaman daftar artikel setelah 2 detik
+            setTimeout(() => {
+                window.location.href = 'Menu Artikel.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

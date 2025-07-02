@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artikel Desa Blimbing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    :root {
+      --primary-color: #009578;
+      --bg-color: #ffffff;
+      --text-color: #333333;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.03);
+    }
+
+    .share {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .share button {
+      background: var(--primary-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .share button:hover {
+      background: #007a61;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+      border: none;
+      display: none;
+      z-index: 999;
+      font-size: 1.2rem;
+    }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: var(--primary-color);
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.2s;
+    }
+
+    .comments {
+      margin-top: 2rem;
+    }
+
+    .comments h3 {
+      margin-bottom: 1rem;
+    }
+
+    .comment-list {
+      margin-top: 1rem;
+    }
+
+    .comment {
+      background: #f1f1f1;
+      padding: 0.8rem;
+      border-radius: 6px;
+      margin-bottom: 0.6rem;
+      animation: fadeIn 0.4s ease;
+    }
+
+    [data-theme="dark"] .comment {
+      background: #1e1e1e;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 0.6rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .comment-form button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .comment-form button:hover {
+      background: #007a61;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.2rem;
+      }
+
+      .dark-toggle, .back-to-top {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌓</button>
+
+  <header>
+    <h1 data-aos="fade-down">Artikel Desa Blimbing</h1>
+  </header>
+
+  <div class="container">
+    <article>
+      <h2 data-aos="fade-up">Judul Artikel: Gotong Royong Warga</h2>
+      <p data-aos="fade-up" data-aos-delay="100">
+        Pada hari Minggu, warga Desa Blimbing mengadakan kerja bakti membersihkan lingkungan sekitar balai desa...
+      </p>
+      <img src="Festival desa.jpg" alt="Kegiatan Warga" data-aos="zoom-in" />
+      <p data-aos="fade-up" data-aos-delay="200">
+        Acara ini diikuti oleh semua lapisan masyarakat mulai dari anak-anak, remaja, hingga orang tua. Antusiasme warga sangat tinggi.
+      </p>
+      <div class="share" data-aos="fade-up" data-aos-delay="300">
+        <button onclick="alert('Berbagi ke Facebook')">Facebook</button>
+        <button onclick="alert('Berbagi ke Twitter')">Twitter</button>
+        <button onclick="alert('Salin tautan')">Copy Link</button>
+      </div>
+    </article>
+
+    <section class="comments" data-aos="fade-up" data-aos-delay="400">
+      <h3>Kolom Komentar</h3>
+      <form class="comment-form" onsubmit="submitComment(event)">
+        <input type="text" id="username" placeholder="Nama Anda" required />
+        <textarea id="commentText" rows="3" placeholder="Tulis komentar..." required></textarea>
+        <button type="submit">Kirim</button>
+      </form>
+      <div class="comment-list" id="commentList"></div>
+    </section>
+  </div>
+
+  <button class="back-to-top" onclick="scrollToTop()">⬆</button>
+
+  <!-- Suara Kirim Komentar -->
+  <audio id="sendSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_684bff2d33.mp3" preload="auto"></audio>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleDarkMode() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    window.onscroll = function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollTop / scrollHeight) * 100;
+      document.getElementById("scrollProgress").style.width = scrolled + "%";
+
+      const backToTop = document.querySelector(".back-to-top");
+      backToTop.style.display = scrollTop > 300 ? "block" : "none";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function submitComment(event) {
+      event.preventDefault();
+      const name = document.getElementById('username').value.trim();
+      const commentText = document.getElementById('commentText').value.trim();
+      if (!name || !commentText) return;
+
+      const commentList = document.getElementById('commentList');
+      const comment = document.createElement('div');
+      comment.className = 'comment';
+      comment.innerHTML = `<strong>${name}</strong><p>${commentText}</p>`;
+      commentList.prepend(comment);
+
+      // Reset form
+      document.getElementById('username').value = '';
+      document.getElementById('commentText').value = '';
+
+      // Mainkan suara
+      document.getElementById('sendSound').play();
+    }
+  </script>
+</body>
+</html>

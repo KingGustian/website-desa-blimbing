@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artikel Lengkap - Desa Blimbing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2c7865;
+      --secondary-color: #ff9800;
+      --light-gray-color: #f8f9fa;
+      --text-color: #343a40;
+    }
+
+    body {
+      background-color: var(--light-gray-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem !important;
+    }
+
+    /* INI BAGIAN PENTING UNTUK HEADER GAMBAR */
+    .article-header {
+      position: relative;
+      height: 50vh;
+      /* Background akan diatur oleh JavaScript */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Ini untuk memberi lapisan gelap agar tulisan terbaca */
+    .article-header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .article-header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .article-title-header {
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .article-container {
+      margin-top: -80px;
+      position: relative;
+      z-index: 3;
+    }
+    
+    .article-card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .article-meta {
+      color: #6c757d;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+    }
+    
+    .article-meta span {
+        margin-right: 15px;
+    }
+
+    .article-content {
+      line-height: 1.8;
+      color: var(--text-color);
+      font-size: 1.1rem;
+    }
+    
+    .article-content p {
+        margin-bottom: 1.5rem;
+    }
+
+    .back-link {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-link:hover {
+      background-color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .social-share {
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+        margin-top: 30px;
+    }
+    
+    .social-share a {
+        font-size: 1.5rem;
+        margin: 0 10px;
+        color: #6c757d;
+        transition: color 0.3s ease;
+    }
+
+    .social-share a:hover {
+        color: var(--primary-color);
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-tree me-2" style="color: var(--secondary-color);"></i>
+        Desa Blimbing
+      </a>
+      <a href="Menu Artikel.html" class="btn btn-outline-light">Lihat Semua Artikel</a>
+    </div>
+  </nav>
+
+  <header id="article-header" class="article-header">
+      <div class="article-header-content">
+          <a href="Menu Artikel.html" class="back-link mb-4 d-inline-block"><i class="fas fa-arrow-left me-2"></i>Kembali ke Daftar Artikel</a>
+          <h1 id="article-title-header" class="display-4 article-title-header"></h1>
+      </div>
+  </header>
+
+  <div class="container article-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card border-0 article-card">
+                <div class="card-body p-4 p-md-5">
+                    <div id="article-meta" class="article-meta"></div>
+                    <div id="article-content" class="article-content"></div>
+                    
+                    <div class="social-share text-center">
+                        <h5 class="mb-3">Bagikan Artikel Ini</h5>
+                        <a href="#" title="Bagikan ke Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#" title="Bagikan ke Twitter"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#" title="Bagikan ke WhatsApp"><i class="fab fa-whatsapp-square"></i></a>
+                        <a href="#" title="Salin Tautan"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <footer class="text-center py-4 mt-5">
+      <p class="mb-0">&copy; 2025 Desa Blimbing. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Pastikan nama file gambar dan lokasinya sudah benar
+    const articles = {
+      1: {
+        title: 'Festival Budaya Desa Blimbing Sukses Digelar',
+        author: 'Admin Desa',
+        date: '5 Mei 2025',
+        image: 'Festival desa.jpg', // Contoh: 'images/festival.jpg' jika di dalam folder
+        content: `
+          <p>Festival budaya tahunan Desa Blimbing kembali digelar dengan sangat meriah dan sukses. Acara yang berlangsung selama dua hari ini berhasil menarik perhatian tidak hanya warga lokal, tetapi juga pengunjung dari luar daerah. Berbagai kesenian tradisional seperti tari topeng, kuda lumping, dan wayang kulit ditampilkan untuk menghibur para penonton.</p>
+          <p>Selain pertunjukan seni, festival ini juga dimeriahkan oleh bazar kuliner yang menyajikan makanan khas Desa Blimbing. Para pengunjung dapat menikmati aneka hidangan lezat seperti nasi jagung, sate blimbing, dan minuman legen yang segar. Kepala Desa Blimbing, Bapak Slamet, menyatakan bahwa acara ini bertujuan untuk melestarikan budaya lokal sekaligus mendorong perekonomian desa melalui pariwisata.</p>
+        `
+      },
+      2: {
+        title: 'Pelatihan Pertanian Organik untuk Warga Desa',
+        author: 'Admin Desa',
+        date: '3 Mei 2025',
+        image: 'Pelatihan Pertanian.jpg',
+        content: `
+          <p>Dinas Pertanian Kabupaten Banjamegara bekerja sama dengan Pemerintah Desa Blimbing mengadakan pelatihan pertanian organik bagi para petani setempat. Pelatihan ini bertujuan untuk meningkatkan pengetahuan dan keterampilan petani dalam mengelola lahan secara ramah lingkungan serta menghasilkan produk pertanian yang lebih sehat dan bernilai jual tinggi.</p>
+          <p>Dalam pelatihan ini, para peserta diberikan materi mengenai pembuatan pupuk kompos, pestisida nabati, dan teknik budidaya tanaman tanpa bahan kimia. Diharapkan, dengan beralih ke pertanian organik, para petani Desa Blimbing dapat meningkatkan pendapatan mereka dan turut menjaga kelestarian lingkungan.</p>
+        `
+      },
+      3: {
+        title: 'Pembangunan Jalan Desa Tahap II Dimulai',
+        author: 'Admin Desa',
+        date: '1 Mei 2025',
+        image: 'jalan desa.jpg',
+        content: `
+          <p>Pemerintah Desa Blimbing secara resmi memulai proyek pembangunan jalan desa tahap kedua. Proyek ini akan mencakup pengaspalan jalan sepanjang 1,5 kilometer yang menghubungkan Dusun Krajan dengan Dusun Ngemplak. Pembangunan ini merupakan kelanjutan dari tahap pertama yang telah selesai tahun lalu.</p>
+          <p>Dengan adanya jalan yang lebih baik, diharapkan mobilitas warga akan semakin lancar, terutama dalam mengangkut hasil pertanian. Dana untuk pembangunan ini berasal dari alokasi dana desa (ADD) dan swadaya masyarakat. Seluruh warga menyambut baik proyek ini dan berharap dapat selesai tepat waktu.</p>
+        `
+      },
+       4: {
+        title: 'Posyandu Desa Blimbing Raih Penghargaan',
+        author: 'Admin Desa',
+        date: '28 April 2025',
+        image: 'Galeri 5.jpg',
+        content: `
+          <p>Posyandu Mawar, yang berlokasi di Desa Blimbing, berhasil meraih penghargaan sebagai Posyandu Terbaik tingkat Kabupaten Banjamegara. Penghargaan ini diberikan atas dedikasi para kader dalam memberikan pelayanan kesehatan ibu dan anak, serta inovasi dalam program-programnya.</p>
+          <p>Beberapa inovasi yang dijalankan antara lain program "Gizi Seimbang untuk Balita" dan "Kelas Ibu Hamil Cerdas". Keberhasilan ini tidak lepas dari dukungan penuh dari pemerintah desa dan partisipasi aktif masyarakat. Diharapkan, prestasi ini dapat menjadi motivasi bagi posyandu lain untuk terus meningkatkan kualitas pelayanannya.</p>
+        `
+      },
+       5: {
+        title: 'Musyawarah Desa Bahas APBDes 2025',
+        author: 'Admin Desa',
+        date: '25 April 2025',
+        image: 'Galeri 3.jpg',
+        content: `
+          <p>Pemerintah Desa Blimbing menggelar musyawarah desa (Musdes) untuk membahas dan menetapkan Anggaran Pendapatan dan Belanja Desa (APBDes) untuk tahun 2025. Acara ini dihadiri oleh berbagai elemen masyarakat, mulai dari perangkat desa, BPD, tokoh masyarakat, hingga perwakilan pemuda dan perempuan.</p>
+          <p>Dalam musyawarah tersebut, berbagai usulan program pembangunan dari warga ditampung dan dibahas bersama untuk menentukan skala prioritas. Kepala desa menekankan pentingnya transparansi dan partisipasi masyarakat dalam setiap tahap perencanaan pembangunan desa agar sesuai dengan kebutuhan warga.</p>
+        `
+      },
+      6: {
+        title: 'Program Beasiswa untuk Pelajar Berprestasi',
+        author: 'Admin Desa',
+        date: '20 April 2025',
+        image: 'beasiswa.jpg',
+        content: `
+          <p>Sebagai bentuk kepedulian terhadap pendidikan, Pemerintah Desa Blimbing meluncurkan program beasiswa "Blimbing Cerdas" bagi pelajar berprestasi dari keluarga kurang mampu. Program ini akan memberikan bantuan biaya pendidikan bagi siswa SD, SMP, dan SMA/SMK.</p>
+          <p>Seleksi penerima beasiswa dilakukan secara ketat berdasarkan prestasi akademik dan non-akademik serta kondisi ekonomi keluarga. Diharapkan, program ini dapat membantu meringankan beban orang tua dan memotivasi para pelajar untuk terus berprestasi demi masa depan yang lebih baik.</p>
+        `
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+    const article = articles[articleId];
+
+    if (article) {
+      // INI BARIS YANG MENGATUR GAMBAR LATAR BELAKANG
+      document.getElementById('article-header').style.backgroundImage = `url('${article.image}')`;
+      
+      document.getElementById('article-title-header').textContent = article.title;
+      
+      document.getElementById('article-meta').innerHTML = `
+        <span><i class="fas fa-user me-2"></i>${article.author}</span>
+        <span><i class="far fa-calendar-alt me-2"></i>${article.date}</span>
+      `;
+      
+      document.getElementById('article-content').innerHTML = article.content;
+    } else {
+      document.getElementById('article-title-header').textContent = 'Artikel Tidak Ditemukan';
+      document.getElementById('article-content').innerHTML = '<p>Maaf, artikel yang Anda cari tidak tersedia.</p>';
+      document.getElementById('article-header').style.backgroundColor = '#6c757d'; // Warna fallback jika artikel tidak ada
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Desa Blimbing - Mandiraja | Kabupaten Banjarnegara</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Typing Text Effect CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <style>
+    :root {
+      --primary-color: #2c7865;
+      --secondary-color: #ff9800;
+      --dark-color: #343a40;
+      --light-color: #f8f9fa;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--primary-color);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar.scrolled {
+      background-color: rgba(44, 120, 101, 0.95);
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .navbar-brand i {
+      color: var(--secondary-color);
+    }
+
+    .nav-link {
+      font-weight: 500;
+      position: relative;
+      margin: 0 5px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--secondary-color);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Marquee */
+    .marquee {
+      background: var(--secondary-color);
+      color: var(--dark-color);
+      padding: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-content span {
+      margin: 0 40px;
+      position: relative;
+    }
+
+    .marquee-content span:not(:last-child)::after {
+      content: "•";
+      position: absolute;
+      right: -30px;
+      color: var(--dark-color);
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      background: url('desa.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 80%);
+      z-index: 1;
+    }
+
+    .hero-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .icon-hero {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 15px;
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-typing {
+      font-size: 2rem;
+      font-weight: 600;
+      height: 40px;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn-custom {
+      background-color: #ffc107;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+    }
+
+    .btn-custom:hover {
+      background-color: #e0a800;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgb(255, 242, 202);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-weight: 700;
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Profile Card */
+    .profile-card {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .profile-img {
+      height: 400px;
+      object-fit: cover;
+    }
+
+    /* Potensi Cards */
+    .potensi-card img {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .potensi-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .potensi-card h5 i {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    #intro-desa img {
+      max-height: 400px;
+      object-fit: cover;
+    }
+
+    /* Galeri */
+    .gallery-img {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-img img {
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-img::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-img:hover::after {
+      opacity: 1;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      padding: 30px 0;
+    }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in-left,
+    .slide-in-right {
+      opacity: 0;
+      /* Tersembunyi awalnya */
+      transition: opacity 1s ease;
+    }
+
+    .animate-slide-in-left {
+      animation: slideInLeft 2s ease forwards;
+    }
+
+    .animate-slide-in-right {
+      animation: slideInRight 2.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .section-title::after {
+        width: 60px;
+      }
+    }
+  </style>
+  <style>
+    .btn-login-nav {
+      background-color: #f4b400;
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 999px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      text-decoration: none;
+      margin-left: auto;
+    }
+
+    .btn-login-nav:hover {
+      transform: scale(1.08);
+      background-color: #d49f00;
+      text-decoration: none;
+    }
+  </style>
+  <style>
+    :root {
+      --primary-color: #2c7865;
+      --secondary-color: #ff9800;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+    }
+
+    /* Batik Transition */
+    .batik-transition {
+      height: 40px;
+      background:
+        linear-gradient(45deg, var(--secondary-color) 25%, transparent 25%) -50px 0,
+        linear-gradient(-45deg, var(--secondary-color) 25%, transparent 25%) -50px 0,
+        linear-gradient(45deg, transparent 75%, var(--secondary-color) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--secondary-color) 75%);
+      background-size: 100px 100px;
+      margin-top: -1px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Profile Section */
+    .profile-section {
+      background-color: #f8f9fa;
+      padding-top: 40px;
+      margin-top: -20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      color: var(--primary-color);
+      position: relative;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-image {
+        height: 40vh;
+      }
+
+      .batik-transition {
+        height: 30px;
+        background-size: 80px 80px;
+      }
+    }
+  </style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+      /* Mencegah scroll horizontal */
+    }
+  </style>
+  <style>
+    /* Responsif untuk tablet dan mobile */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .btn-custom {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+
+      .potensi-card img {
+        max-width: 120px;
+      }
+
+      .article-card .card-img-top {
+        height: 150px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 300px;
+      }
+    }
+
+    /* Responsif untuk mobile kecil */
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .btn-custom {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+      }
+
+      .navbar-brand {
+        font-size: 1rem;
+      }
+
+      .potensi-card img {
+        max-width: 100px;
+      }
+
+      .article-card .card-img-top {
+        height: 120px;
+      }
+
+      iframe {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-tree me-2"></i>
+        Desa Blimbing
+      </a>
+      <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#beranda">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#profil">Profil Desa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#struktur">Struktur</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#potensi">Potensi Desa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#artikel">Artikel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#galeri">Galeri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#kontak">Kontak</a>
+          </li>
+        </ul>
+        <!-- Tambahkan tombol Login / Sign Up -->
+        <a href="Login dan Sign in.html" id="login-button" class="btn btn-login-nav">Login / Sign Up</a>
+
+        <div id="user-menu" class="d-none align-items-center">
+          <span class="navbar-text text-white me-2">
+            Halo, <strong id="user-name"></strong>
+          </span>
+          <button id="logout-button" class="btn btn-outline-warning btn-sm">Logout</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee-content">
+      <span>Bantuan sosial datang pada tanggal 1 Juni</span>
+      <span>Gotong royong desa tiap tanggal 1</span>
+      <span>Layanan 08.00–15.00 WIB</span>
+      <span>Pendaftaran KTP elektronik dibuka</span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <section id="beranda">
+      <div class="container text-center text-white">
+        <i data-lucide="map" class="icon-hero"></i>
+        <h1 class="hero-title">Selamat Datang di</h1>
+        <h2 class="hero-typing"><span id="typed-text"></span></h2>
+        <p class="hero-subtitle">Tempat informasi dan layanan warga Desa Blimbing</p>
+        <a href="Login dan Sign in.html" class="btn-custom">Masuk Sekarang</a>
+      </div>
+    </section>
+  </section>
+
+  <!-- Batik Transition -->
+  <div class="batik-transition"></div>
+  <br>
+  <!-- Judul -->
+  <div class="text-center mb-5">
+    <section id="profil">
+      <h2 class="fw-bold" style="color: var(--primary-color);">Profil Desa Blimbing</h2>
+      <p class="text-muted">Menjunjung budaya lokal, membangun masa depan modern.</p>
+  </div>
+
+  <!-- Intro Desa -->
+  <section id="intro-desa" class="py-5 bg-light">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Gambar -->
+        <div class="col-md-6 mb-4 mb-md-0 slide-in-left">
+          <img src="desa 2.jpg" alt="Desa Blimbing" class="img-fluid rounded shadow">
+        </div>
+
+        <!-- Teks -->
+        <div class="col-md-6 slide-in-right">
+          <h2 class="mb-3 text-success fw-bold">Selamat Datang di Desa Blimbing</h2>
+          <p class="lead">
+            Desa Blimbing merupakan desa yang kaya akan budaya, alam, dan kebersamaan. Kami berkomitmen untuk membangun
+            masyarakat yang sejahtera dan berdaya saing dengan semangat gotong royong.
+          </p>
+          <p>
+            Jelajahi potensi desa kami mulai dari sektor pertanian, UMKM lokal, hingga destinasi wisata yang menawan.
+            Bersama kita ciptakan Desa Blimbing yang maju dan berkelanjutan.
+          </p>
+          <a href="#potensi" class="btn btn-success mt-3">Lihat Potensi Desa</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <br><br>
+  <!-- Grid Informasi Visual -->
+  <div class="row g-4">
+    <div class="col-md-4 text-center">
+      <i class="fas fa-map-marker-alt fa-3x text-success mb-3"></i>
+      <h5>Letak Geografis</h5>
+      <p>Desa Blimbing berada di Kecamatan Mandiraja, Kabupaten Banjarnegara. Memiliki wilayah subur dengan pemandangan
+        alam yang mempesona.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <i class="fas fa-coins fa-2x text-warning me-3"></i> <!-- Ikon koin warna kuning -->
+      <h5>Perekonomian</h5>
+      <p>Mayoritas warga bekerja di sektor pertanian, peternakan, dan pengembangan UMKM lokal yang tumbuh pesat.</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <i class="fas fa-users fa-3x text-success mb-3"></i>
+      <h5>Budaya dan Masyarakat</h5>
+      <p>Masyarakat menjunjung tinggi nilai gotong royong, pelestarian tradisi, serta aktif dalam kegiatan sosial dan
+        keagamaan.</p>
+    </div>
+  </div>
+
+  <!-- Visi dan Misi -->
+  <div class="mt-5">
+    <div class="row g-4">
+      <!-- Visi -->
+      <div class="col-md-6">
+        <div class="border rounded-4 p-4 h-100 shadow-sm bg-white">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-eye fa-2x text-primary me-3"></i>
+            <h4 class="mb-0 fw-bold">Visi</h4>
+          </div>
+          <p class="fst-italic fs-5 text-muted">“Terwujudnya Desa Blimbing yang mandiri, berbudaya, dan sejahtera
+            berbasis kearifan lokal.”</p>
+        </div>
+      </div>
+
+      <!-- Misi -->
+      <div class="col-md-6">
+        <div class="border rounded-4 p-4 h-100 shadow-sm bg-white">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-bullseye fa-2x me-3" style="color: #fd7e14;"></i> <!-- warna coklat -->
+            <h4 class="mb-0 fw-bold">Misi</h4>
+          </div>
+          <ul class="mb-0">
+            <li>Peningkatan pelayanan publik yang cepat dan transparan.</li>
+            <li>Pembangunan infrastruktur secara merata dan berkelanjutan.</li>
+            <li>Pelestarian budaya dan pengembangan potensi pariwisata desa.</li>
+            <li>Pemberdayaan masyarakat melalui pendidikan dan pelatihan.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pemerintahan Desa -->
+  <section class="py-5 bg-light" id="struktur">
+    <div class="container">
+      <h2 class="section-title text-center">Struktur Pemerintahan Desa</h2>
+      <p class="text-center mb-5">Struktur pemerintahan Desa Blimbing yang melayani masyarakat dengan sepenuh hati.</p>
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6 text-center">
+          <div class="potensi-card">
+            <img src="kades.jpg" alt="Kepala Desa" class="rounded-circle mb-3" width="180" height="180">
+            <h4>Bapak Slamet Riyadi</h4>
+            <p class="text-muted">Kepala Desa</p>
+            <p class="small">"Memimpin dengan hati untuk kemajuan desa."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sekretaris & Bendahara -->
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="sekertaris.jpg" alt="Sekretaris Desa" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Saptono</h5>
+            <p class="text-muted">Sekretaris Desa (Sekdes)</p>
+            <p class="small">"Melayani dengan profesional dan tulus."</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kaur keuangan.jpg" alt="kaur keuangan" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Darinto</h5>
+            <p class="text-muted">Kaur keuangan</p>
+            <p class="small">"Transparansi dan akuntabilitas keuangan desa."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kepala Seksi (Kasi) -->
+      <h3 class="text-center mt-5 mb-4" style="color: var(--primary-color);">Kepala Seksi</h3>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kasi pemerintahan.jpg" alt="Kasi Pemerintahan" class="rounded-circle mb-3" width="150"
+              height="150">
+            <h5>Ibu Puji Triyani</h5>
+            <p class="text-muted">Kasi Pemerintahan</p>
+            <p class="small">"Membangun tata kelola pemerintahan yang baik."</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kasi pelayanan.jpg" alt="Kasi Pelayanan" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Wahda Nurul H</h5>
+            <p class="text-muted">Kasi Pelayanan</p>
+            <p class="small">"Pelayanan prima untuk kesejahteraan warga."</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kasi kesejahteraan.jpg" alt="Kasi Kesejahteraan" class="rounded-circle mb-3" width="150"
+              height="150">
+            <h5>Bapak Antono</h5>
+            <p class="text-muted">Kasi Kesejahteraan</p>
+            <p class="small">"Meningkatkan kualitas hidup masyarakat."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kepala Urusan (Kaur) -->
+      <h3 class="text-center mt-5 mb-4" style="color: var(--primary-color);">Kepala Urusan</h3>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kaur umum.jpg" alt="Kaur Umum" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Novrika Dani</h5>
+            <p class="text-muted">Kaur Umum</p>
+            <p class="small">"Administrasi tertib untuk pelayanan optimal."</p>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kaur perencanaan.jpg" alt="Kaur Perencanaan" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Zaeni </h5>
+            <p class="text-muted">Kaur Perencanaan</p>
+            <p class="small">"Mewujudkan pembangunan desa yang terencana."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kepala Dusun (Kadus) -->
+      <h3 class="text-center mt-5 mb-4" style="color: var(--primary-color);">Kepala Dusun</h3>
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kadus 1.jpg" alt="Kadus 1" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Arifin</h5>
+            <p class="text-muted">Kadus 1</p>
+            <p class="small">"Mengayomi warga dusun dengan penuh tanggung jawab."</p>
+          </div>
+        </div>
+      </div>
+      <h3 class="text-center mt-5 mb-4" style="color: var(--primary-color);">Kepala Dusun</h3>
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-4 text-center">
+          <div class="potensi-card">
+            <img src="kadus 2.jpg" alt="Kadus 2" class="rounded-circle mb-3" width="150" height="150">
+            <h5>Bapak Arif Zaeni</h5>
+            <p class="text-muted">Kadus 2</p>
+            <p class="small">"Mengayomi warga dusun dengan penuh tanggung jawab."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Potensi Desa -->
+  <section class="py-5" id="potensi">
+    <div class="container">
+      <h2 class="section-title text-center">Potensi Desa</h2>
+      <p class="text-center mb-5">Desa Blimbing memiliki berbagai potensi yang dapat dikembangkan untuk kesejahteraan
+        masyarakat.</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-leaf me-2" style="color: #28a745;"></i>Pertanian</h5>
+            <p>Desa Blimbing dikenal dengan hasil pertanian seperti padi, jagung, dan buah-buahan. Produk unggulan kami
+              adalah beras organik dan buah belimbing khas.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-industry me-2" style="color: #007bff;"></i>Industri Rumah Tangga</h5>
+            <p>Produk lokal seperti kerajinan tangan dari bambu, anyaman rotan, dan makanan khas seperti jenang dodol
+              menjadi unggulan desa.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-mountain me-2" style="color: #fd7e14;"></i>Pariwisata</h5>
+            <p>Keindahan alam dan budaya lokal menjadi daya tarik wisatawan. Desa kami memiliki panorama sawah
+              terasering dan air terjun alami.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistik Penduduk -->
+  <section class="py-5 bg-light" id="statistik">
+    <div class="container">
+      <h2 class="section-title text-center">Statistik Penduduk</h2>
+      <p class="text-center mb-5">Data penduduk Desa Blimbing berdasarkan kategori tertentu.</p>
+      <div class="row text-center">
+        <div class="col-md-3 mb-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-users me-2" style="color: var(--primary-color);"></i>Total Penduduk</h5>
+            <p class="display-5" style="color: var(--primary-color);">2,812</p>
+            <p class="small text-muted">Jiwa</p>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-male me-2" style="color: #28a745;"></i>Laki-laki</h5>
+            <p class="display-5" style="color: #28a745;">1,426</p>
+            <p class="small text-muted">Jiwa</p>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-female me-2" style="color: #dc3545;"></i>Perempuan</h5>
+            <p class="display-5" style="color: #dc3545;">1,317</p>
+            <p class="small text-muted">Jiwa</p>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="potensi-card">
+            <h5><i class="fas fa-home me-2" style="color: #6f42c1;"></i>Keluarga</h5>
+            <p class="display-5" style="color: #6f42c1;">631</p>
+            <p class="small text-muted">KK</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sejarah Desa -->
+  <section class="py-5" id="sejarah">
+    <div class="container">
+      <h2 class="section-title text-center">Sejarah Desa</h2>
+      <p class="text-center mb-5">Mengungkap perjalanan sejarah Desa Blimbing dari masa ke masa.</p>
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="Galeri 6.jpg" alt="Sejarah Desa" class="img-fluid rounded mb-4">
+        </div>
+        <div class="col-lg-6">
+          <p>Desa Blimbing diperkirakan berdiri pada akhir abad ke-18. Nama “Blimbing” berasal dari banyaknya pohon
+            blimbing yang tumbuh di wilayah tersebut. Pada masa awal, desa ini dibuka oleh para peladang dan petani dari
+            wilayah sekitar karena tanahnya yang subur. Seiring waktu, terbentuklah komunitas yang menetap dan membangun
+            kehidupan desa secara gotong royong.</p>
+          <p>Pada masa penjajahan Belanda, warga desa hidup dari pertanian namun juga mengalami tekanan seperti kerja
+            paksa (rodi) dan pajak tinggi. Meskipun begitu, semangat kebersamaan tetap kuat. Setelah Indonesia merdeka
+            tahun 1945, masyarakat Blimbing turut berperan dalam perjuangan kemerdekaan dan membantu para pejuang.
+            Setelahnya, pemerintahan desa mulai dibentuk lebih terstruktur untuk membangun kembali kehidupan masyarakat.
+          </p>
+          <p>Selama masa Orde Lama hingga Orde Baru, Desa Blimbing mengalami berbagai pembangunan fisik melalui program
+            pemerintah seperti pembangunan jalan desa, sekolah, dan irigasi. Pertanian tetap menjadi sumber utama
+            penghidupan warga, sementara budaya lokal seperti wayang kulit dan kenduri terus dijaga dan diwariskan. Masa
+            ini juga menjadi fondasi bagi pembangunan jangka panjang di desa.</p>
+          <p>Memasuki era reformasi hingga sekarang, Desa Blimbing mulai mengikuti perkembangan zaman. Teknologi
+            informasi mulai dimanfaatkan untuk pelayanan publik dan sistem informasi desa. Pemuda desa aktif dalam UMKM,
+            promosi budaya, serta pemberdayaan masyarakat. Desa Blimbing kini tumbuh menjadi desa yang maju namun tetap
+            menjaga nilai-nilai tradisi dan kearifan lokal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Artikel Desa -->
+  <section class="py-5 bg-light" id="artikel">
+    <div class="container">
+      <h2 class="section-title text-center">Artikel Desa</h2>
+      <p class="text-center mb-5">Berita dan informasi terbaru seputar kegiatan dan perkembangan Desa Blimbing.</p>
+
+      <div class="row">
+        <!-- Artikel 1 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="article-card card h-100 border-0 shadow-sm">
+            <div class="position-relative">
+              <img src="Galeri 1.jpg" class="card-img-top" alt="Festival Budaya Desa">
+              <div class="article-date position-absolute bg-primary text-white p-2 rounded">
+                <span class="d-block text-center fw-bold">15</span>
+                <span class="d-block text-center">Juni 2025</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="article-meta mb-2">
+                <span class="badge bg-secondary me-2">Budaya</span>
+                <small class="text-muted"><i class="far fa-clock me-1"></i>3 min read</small>
+              </div>
+              <h5 class="card-title">Festival Budaya Desa Blimbing Sukses Digelar</h5>
+              <p class="card-text">Festival budaya tahunan Desa Blimbing kembali digelar dengan meriah, menampilkan
+                berbagai kesenian tradisional dan kuliner khas...</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="Menu Artikel.html" class="btn btn-sm btn-outline-primary">Baca Selengkapnya</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Artikel 2 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="article-card card h-100 border-0 shadow-sm">
+            <div class="position-relative">
+              <img src="Galeri 2.jpg" class="card-img-top" alt="Pelatihan Pertanian">
+              <div class="article-date position-absolute bg-primary text-white p-2 rounded">
+                <span class="d-block text-center fw-bold">02</span>
+                <span class="d-block text-center">Juni 2025</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="article-meta mb-2">
+                <span class="badge bg-success me-2">Pertanian</span>
+                <small class="text-muted"><i class="far fa-clock me-1"></i>4 min read</small>
+              </div>
+              <h5 class="card-title">Pelatihan Pertanian Organik untuk Warga Desa</h5>
+              <p class="card-text">Dinas Pertanian Kabupaten Banjarnegara memberikan pelatihan pertanian organik kepada
+                kelompok tani Desa Blimbing untuk meningkatkan hasil panen...</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="Menu Artikel.html" class="btn btn-sm btn-outline-primary">Baca Selengkapnya</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Artikel 3 -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="article-card card h-100 border-0 shadow-sm">
+            <div class="position-relative">
+              <img src="Galeri 3.jpg" class="card-img-top" alt="Pembangunan Jalan">
+              <div class="article-date position-absolute bg-primary text-white p-2 rounded">
+                <span class="d-block text-center fw-bold">20</span>
+                <span class="d-block text-center">Mei 2025</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="article-meta mb-2">
+                <span class="badge bg-info me-2">Infrastruktur</span>
+                <small class="text-muted"><i class="far fa-clock me-1"></i>5 min read</small>
+              </div>
+              <h5 class="card-title">Pembangunan Jalan Desa Tahap II Dimulai</h5>
+              <p class="card-text">Pemerintah Desa Blimbing memulai pembangunan jalan desa tahap II sepanjang 1,5 km
+                yang akan menghubungkan dusun Krajan dengan dusun Ngemplak...</p>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+              <a href="Menu Artikel.html" class="btn btn-sm btn-outline-primary">Baca Selengkapnya</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="Menu Artikel.html" class="btn btn-primary px-4">
+          <i class="fas fa-book-open me-2"></i>Lihat Semua Artikel
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Artikel Card Styles */
+    .article-card {
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .article-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .article-card .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .article-card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .article-date {
+      top: 15px;
+      left: 15px;
+      width: 50px;
+      line-height: 1.2;
+      background-color: var(--primary-color) !important;
+    }
+
+    .article-date span:first-child {
+      font-size: 1.25rem;
+    }
+
+    .article-date span:last-child {
+      font-size: 0.7rem;
+    }
+
+    .article-meta {
+      font-size: 0.85rem;
+    }
+
+    .article-card .card-title {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .article-card:hover .card-title {
+      color: var(--secondary-color);
+    }
+
+    .article-card .card-text {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-outline-primary:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+  </style>
+
+
+  <!-- Galeri Desa -->
+  <section class="py-5 bg-light" id="galeri">
+    <div class="container">
+      <h2 class="section-title text-center">Galeri Desa</h2>
+      <p class="text-center mb-5">Potret kehidupan dan keindahan Desa Blimbing.</p>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="gallery-img">
+            <img src="Galeri 1.jpg" alt="Galeri 1" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="gallery-img">
+            <img src="Galeri 2.jpg" alt="Galeri 2" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="gallery-img">
+            <img src="Galeri 3.jpg" alt="Galeri 3" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="gallery-img">
+            <img src="Galeri 4.jpg" alt="Galeri 4" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="gallery-img">
+            <img src="Galeri 5.jpg" alt="Galeri 5" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="gallery-img">
+            <img src="Galeri 6.jpg" alt="Galeri 6" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Peta & Kontak -->
+  <section class="py-5" id="kontak">
+    <div class="container">
+      <h2 class="section-title text-center">Peta & Kontak</h2>
+      <p class="text-center mb-5">Hubungi kami atau kunjungi lokasi Desa Blimbing.</p>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="potensi-card h-100">
+            <h5><i class="fas fa-map-marker-alt me-2" style="color: var(--primary-color);"></i>Alamat</h5>
+            <p class="mb-4">Jl. Raya Blimbing KM 1, Mandiraja, Banjarnegara, Jawa Tengah</p>
+
+            <h5><i class="fas fa-phone me-2" style="color: #28a745;"></i>Telepon</h5>
+            <p class="mb-4">+62 852-2788-5556</p>
+
+            <h5><i class="fas fa-envelope me-2" style="color: #dc3545;"></i>Email</h5>
+            <p class="mb-4">kantordesablimbing@gmail.com</p>
+
+            <h5><i class="fas fa-clock me-2" style="color: #6f42c1;"></i>Jam Layanan</h5>
+            <p>Senin-Jumat : 08.00-15.00 WIB</p>
+            <p>Istirahat : 12.00-13.00 WIB</p>
+            <p>Sabtu-Minggu : Libur</p>
+            <hr class="my-4">
+
+            <h5><i class="fas fa-edit me-2" style="color: var(--primary-color);"></i> Buat Laporan atau Aduan</h5>
+            <p class="small text-muted">Silakan gunakan formulir ini untuk mengirimkan laporan, aduan, atau masukan
+              kepada kami.</p>
+
+            <form action="https://formspree.io/f/xnnvrnlk" method="POST">
+              <div class="mb-3">
+                <label for="nama_pelapor" class="form-label">Nama Pelapor</label>
+                <input type="text" class="form-control" id="nama_pelapor" name="nama_pelapor" required>
+              </div>
+              <div class="mb-3">
+                <label for="email_pelapor" class="form-label">Email (untuk konfirmasi)</label>
+                <input type="email" class="form-control" id="email_pelapor" name="email_pelapor" required>
+              </div>
+              <div class="mb-3">
+                <label for="judul_laporan" class="form-label">Judul Laporan</label>
+                <input type="text" class="form-control" id="judul_laporan" name="judul_laporan" required>
+              </div>
+              <div class="mb-3">
+                <label for="kategori" class="form-label">Kategori Laporan</label>
+                <select class="form-select" id="kategori" name="kategori">
+                  <option selected>Pilih Kategori...</option>
+                  <option value="Infrastruktur">Infrastruktur (Jalan, Jembatan, dll)</option>
+                  <option value="Layanan Publik">Layanan Publik</option>
+                  <option value="Sosial Kemasyarakatan">Sosial Kemasyarakatan</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="isi_laporan" class="form-label">Isi Laporan</label>
+                <textarea class="form-control" id="isi_laporan" name="isi_laporan" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Kirim Laporan</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="h-100">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7912.0714099014285!2d109.46947569066853!3d-7.461302020200508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6553d64991c76d%3A0x5027a76e35524e0!2sBlimbing%2C%20Kec.%20Mandiraja%2C%20Kab.%20Banjarnegara%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1745995880435!5m2!1sid!2sid"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3"><i class="fas fa-tree me-2" style="color: var(--secondary-color);"></i>Desa Blimbing</h5>
+          <p>Media sosial resmi Desa Blimbing.</p>
+          <div class="social-icons">
+            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h5 class="mb-3">Tautan Cepat</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#beranda" class="text-white text-decoration-none">Beranda</a></li>
+            <li class="mb-2"><a href="#profil" class="text-white text-decoration-none">Profil Desa</a></li>
+            <li class="mb-2"><a href="#struktur" class="text-white text-decoration-none">Struktur</a></li>
+            <li class="mb-2"><a href="#potensi" class="text-white text-decoration-none">Potensi</a></li>
+            <li class="mb-2"><a href="#galeri" class="text-white text-decoration-none">Galeri</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5 class="mb-3">Kontak Kami</h5>
+          <p><i class="fas fa-map-marker-alt me-2"></i>Desa Blimbing, Kecamatan Mandiraja, Kabupaten Banjarnegara</p>
+          <p><i class="fas fa-phone me-2"></i>+62 852-2788-5556</p>
+          <p><i class="fas fa-envelope me-2"></i>kantordesablimbing@gmail.com</p>
+        </div>
+      </div>
+      <hr class="my-4 bg-secondary">
+      <div class="text-center">
+        <p class="mb-0">© 2025 Desa Blimbing. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a class="back-to-top" href="#">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // DITAMBAHKAN: Logika untuk menampilkan nama pengguna atau tombol login
+    document.addEventListener('DOMContentLoaded', function () {
+      const loggedInUserName = localStorage.getItem('loggedInUserName');
+      const loginButton = document.getElementById('login-button');
+      const userMenu = document.getElementById('user-menu');
+      const userNameSpan = document.getElementById('user-name');
+      const logoutButton = document.getElementById('logout-button');
+
+      if (loggedInUserName) {
+        // Jika ada pengguna yang login, lakukan ini:
+        loginButton.classList.add('d-none'); // 1. Sembunyikan tombol login
+        userMenu.classList.remove('d-none'); // 2. Tampilkan menu pengguna
+        userNameSpan.textContent = loggedInUserName; // 3. Tulis namanya
+      }
+
+      // Fungsi untuk tombol Logout
+      logoutButton.addEventListener('click', function () {
+        // Hapus data nama dari localStorage
+        localStorage.removeItem('loggedInUserName');
+        // Muat ulang halaman agar tombol login muncul kembali
+        window.location.href = 'index.html';
+      });
+    });
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+
+    // Scroll to top functionality
+    backToTopButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Active nav link based on scroll position
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', function () {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Inisialisasi Lucide Icons
+    lucide.createIcons();
+
+    // Inisialisasi Typed.js
+    const typed = new Typed('#typed-text', {
+      strings: ["Desa Blimbing", "Mandiraja", "Kabupaten Banjarnegara"],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+  </script>
+  <script>
+    // Render icon Lucide
+    lucide.createIcons();
+  </script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          if (el.classList.contains('slide-in-left')) {
+            el.classList.add('animate-slide-in-left');
+          }
+          if (el.classList.contains('slide-in-right')) {
+            el.classList.add('animate-slide-in-right');
+          }
+        } else {
+          el.classList.remove('animate-slide-in-left', 'animate-slide-in-right');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</body>
+
+</html>
